@@ -1,0 +1,100 @@
+{
+    // ── Editor: core behaviour ───────────────────────────────────────────────
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.ruff": "explicit",
+        "source.organizeImports.ruff": "explicit"
+    },
+    // ── Python files (.py) ───────────────────────────────────────────────────
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    // ── Notebook files (.ipynb) ──────────────────────────────────────────────
+    "[jupyter]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "source.fixAll.ruff": "explicit",
+        "source.organizeImports.ruff": "explicit"
+    },
+    // ── Ruff: linter + formatter ─────────────────────────────────────────────
+    "ruff.enable": true,
+    "ruff.organizeImports": true,
+    "ruff.fixAll": true,
+    "ruff.lint.enable": true,
+    "ruff.format.enable": true,
+    "ruff.lint.select": [
+        "E", // pycodestyle errors
+        "W", // pycodestyle warnings
+        "F", // pyflakes
+        "I", // isort
+        "B", // flake8-bugbear
+        "C4", // flake8-comprehensions
+        "UP", // pyupgrade
+        "N", // pep8-naming
+        "ANN", // flake8-annotations (typing hints)
+        "SIM", // flake8-simplify
+        "TCH" // flake8-type-checking
+    ],
+    // ── Pyright: static type checking in strict mode ─────────────────────────
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.callArgumentNames": "partial",
+    "python.analysis.diagnosticMode": "workspace",
+    // ── General Python settings ──────────────────────────────────────────────
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    // ── Suppress __pycache__ generation ─────────────────────────────────────
+    // -B flag: tells the Python interpreter not to write .pyc bytecode files
+    "python.terminal.launchArgs": [
+        "-B"
+    ],
+    // PYTHONDONTWRITEBYTECODE=1 covers all terminals (scripts, tasks, debugger)
+    "terminal.integrated.env.linux": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    // Hide any __pycache__ dirs that may already exist from the Explorer view
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+    // ── Mypy: search for stubs, silently ignore if missing ───────────────────
+    // --ignore-missing-imports: suppresses errors for stubs that cannot be found
+    // --follow-imports=silent: type-checks imported modules but silences errors
+    "mypy-type-checker.args": [
+        "--ignore-missing-imports",
+        "--follow-imports=silent"
+    ],
+    // Pyright/Pylance stub resolution path (falls back gracefully if absent)
+    "python.analysis.stubPath": "${workspaceFolder}/typestubs",
+    "python.analysis.autoSearchPaths": true
+}
